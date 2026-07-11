@@ -5,10 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Word Expert — Privacy Policy</title>
 <style>
-  :root { color-scheme: light dark; --fg:#1b1b1f; --muted:#5a5a68; --bg:#ffffff; --card:#f4f3f8; --accent:#5b53c4; --line:#e2e1ea; }
+  /* Light is the default. The app appends ?theme=light|dark so the page follows the theme
+     chosen inside the app; without the parameter it follows the system setting. */
+  :root, :root[data-theme="light"] { color-scheme: light; --fg:#1b1b1f; --muted:#5a5a68; --bg:#ffffff; --card:#f4f3f8; --accent:#5b53c4; --line:#e2e1ea; }
   @media (prefers-color-scheme: dark) {
-    :root { --fg:#e5e1e9; --muted:#a8a5b3; --bg:#131318; --card:#1e1d24; --accent:#b7b0ff; --line:#2e2d36; }
+    :root:not([data-theme="light"]) { color-scheme: dark; --fg:#e5e1e9; --muted:#a8a5b3; --bg:#131318; --card:#1e1d24; --accent:#b7b0ff; --line:#2e2d36; }
   }
+  :root[data-theme="dark"] { color-scheme: dark; --fg:#e5e1e9; --muted:#a8a5b3; --bg:#131318; --card:#1e1d24; --accent:#b7b0ff; --line:#2e2d36; }
   * { box-sizing: border-box; }
   body { margin:0; padding:24px 16px 64px; background:var(--bg); color:var(--fg);
          font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans Thai",sans-serif;
@@ -31,6 +34,12 @@
   th { color:var(--muted); font-weight:600; }
   footer { margin-top:48px; padding-top:16px; border-top:1px solid var(--line); color:var(--muted); font-size:0.85rem; }
 </style>
+<script>
+  (function () {
+    var m = location.search.match(/[?&]theme=(light|dark)/);
+    if (m) document.documentElement.setAttribute('data-theme', m[1]);
+  })();
+</script>
 </head>
 <body>
 <main>
