@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Word Expert — Política de privacidad</title>
+<style>
+  :root { color-scheme: light dark; --fg:#1b1b1f; --muted:#5a5a68; --bg:#ffffff; --card:#f4f3f8; --accent:#5b53c4; --line:#e2e1ea; }
+  @media (prefers-color-scheme: dark) {
+    :root { --fg:#e5e1e9; --muted:#a8a5b3; --bg:#131318; --card:#1e1d24; --accent:#b7b0ff; --line:#2e2d36; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; padding:24px 16px 64px; background:var(--bg); color:var(--fg);
+         font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans Thai",sans-serif;
+         line-height:1.65; font-size:16px; }
+  main { max-width:760px; margin:0 auto; }
+  h1 { font-size:1.6rem; margin:0 0 4px; }
+  h2 { font-size:1.15rem; margin:32px 0 8px; color:var(--accent); }
+  ul { padding-left:20px; }
+  li { margin:6px 0; }
+  a { color:var(--accent); }
+  .meta { color:var(--muted); font-size:0.9rem; margin:0 0 24px; }
+  .langs { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 24px; }
+  .langs a { display:inline-block; padding:4px 12px; border:1px solid var(--line); border-radius:999px;
+             text-decoration:none; font-size:0.85rem; }
+  .langs a[aria-current="page"] { background:var(--card); border-color:var(--accent); font-weight:600; }
+  .card { background:var(--card); border-radius:12px; padding:12px 16px; margin:16px 0; }
+  table { border-collapse:collapse; width:100%; margin:12px 0; font-size:0.92rem; }
+  th, td { text-align:left; vertical-align:top; padding:8px 10px; border-bottom:1px solid var(--line); }
+  th { color:var(--muted); font-weight:600; }
+  footer { margin-top:48px; padding-top:16px; border-top:1px solid var(--line); color:var(--muted); font-size:0.85rem; }
+</style>
+</head>
+<body>
+<main>
+
+<nav class="langs">
+  <a href="wordexpert-privacy.html">English</a>
+  <a href="wordexpert-privacy-th.html">ไทย</a>
+  <a href="wordexpert-privacy-fr.html">Français</a>
+  <a href="wordexpert-privacy-es.html" aria-current="page">Español</a>
+</nav>
+
+<h1>Word Expert — Política de privacidad</h1>
+<p class="meta">Fecha de entrada en vigor: 11 de julio de 2026 · Desarrollador: Pisanu · Contacto: <a href="mailto:dev.pisanu@gmail.com">dev.pisanu@gmail.com</a></p>
+
+<div class="card">
+  <p><strong>En resumen:</strong> Word Expert no tiene cuentas de usuario y nunca pide tu nombre, correo, teléfono ni ubicación. Tus ajustes, favoritos y búsquedas permanecen en tu dispositivo. La aplicación sí envía la palabra cuya definición consultas a un servicio de diccionario, envía informes de fallos y estadísticas de uso a Firebase y —solo en la versión gratuita— muestra anuncios que utilizan tu identificador de publicidad.</p>
+</div>
+
+<h2>1. Información almacenada en tu dispositivo</h2>
+<p>Lo siguiente se guarda en el almacenamiento privado de la aplicación y nunca lo subimos a ningún servidor:</p>
+<ul>
+  <li>Ajustes: idioma de la interfaz, tema, tipo de puntuación, diccionario seleccionado, tipo de búsqueda predeterminado y opciones de visualización y longitud de palabra.</li>
+  <li>Tus búsquedas favoritas y los nombres que les asignas.</li>
+  <li>La caducidad del desbloqueo Pro obtenido al ver un vídeo con recompensa, y el estado de la compra de Pro.</li>
+</ul>
+<p>Desinstalar la aplicación, o borrar sus datos en los ajustes de Android, elimina todo ello.</p>
+
+<h2>2. Información enviada a los servicios que utilizamos</h2>
+<table>
+  <tr><th>Servicio</th><th>Qué se envía</th><th>Para qué</th></tr>
+  <tr>
+    <td>Servicio de definiciones (alojado en Supabase)</td>
+    <td>La palabra que has pulsado y el idioma del diccionario. Ningún identificador que vincule la petición contigo.</td>
+    <td>Devolver la definición de esa palabra.</td>
+  </tr>
+  <tr>
+    <td>Firebase Crashlytics</td>
+    <td>Informes de fallos: modelo del dispositivo, versión del sistema operativo, versión de la aplicación, un identificador de instalación aleatorio y el estado técnico de la aplicación en el momento del fallo.</td>
+    <td>Detectar y corregir fallos.</td>
+  </tr>
+  <tr>
+    <td>Firebase Analytics</td>
+    <td>Eventos de uso anónimos y agregados (por ejemplo, que se solicitó un vídeo con recompensa), junto con la información estándar de dispositivo y aplicación que recoge Google.</td>
+    <td>Entender qué funciones se usan y cómo se comporta la aplicación.</td>
+  </tr>
+  <tr>
+    <td>Firebase Remote Config</td>
+    <td>Versión de la aplicación e identificador de instalación aleatorio.</td>
+    <td>Entregar valores de configuración sin necesidad de actualizar la aplicación.</td>
+  </tr>
+  <tr>
+    <td>Publicidad: AppLovin MAX y Amazon Publisher Services (<strong>solo versión gratuita</strong>)</td>
+    <td>Identificador de publicidad (AAID), dirección IP, información del dispositivo y del sistema, ubicación aproximada derivada de la IP e interacciones con los anuncios.</td>
+    <td>Seleccionar, mostrar y medir los anuncios que financian la versión gratuita.</td>
+  </tr>
+  <tr>
+    <td>Google Play Billing</td>
+    <td>El estado de compra del producto integrado Pro.</td>
+    <td>Desbloquear Pro y restaurarlo en un dispositivo nuevo. El pago lo gestiona íntegramente Google; la aplicación nunca ve los datos de tu tarjeta.</td>
+  </tr>
+</table>
+
+<h2>3. Publicidad y tus opciones</h2>
+<ul>
+  <li><strong>Comprar Pro elimina todos los anuncios</strong> y detiene el uso de los SDK publicitarios.</li>
+  <li>Si te encuentras en el EEE, el Reino Unido o Suiza, antes de mostrar anuncios personalizados aparece una pantalla de consentimiento de la plataforma certificada de AppLovin, y respetamos tu elección. Puedes cambiarla más adelante desde esa misma pantalla.</li>
+  <li>Los residentes en California pueden ejercer su derecho «Do Not Sell or Share My Personal Information» desde la misma pantalla de consentimiento.</li>
+  <li>En cualquier dispositivo puedes limitar el seguimiento publicitario o restablecer tu identificador de publicidad en <em>Ajustes de Android → Privacidad → Anuncios</em>.</li>
+</ul>
+
+<h2>4. Permisos</h2>
+<p>La aplicación solicita <strong>únicamente acceso a Internet</strong>. No pide acceso a tu ubicación, contactos, cámara, micrófono, fotos ni archivos.</p>
+
+<h2>5. Menores</h2>
+<p>Word Expert no está dirigida a menores de 13 años y no recopilamos conscientemente datos personales de ellos. Si crees que un menor ha facilitado datos personales a través de la aplicación, contáctanos y los eliminaremos.</p>
+
+<h2>6. Conservación, seguridad y eliminación</h2>
+<p>No mantenemos una base de datos de usuarios, por lo que no existe un perfil personal tuyo que eliminar. Los datos de diagnóstico en Firebase se conservan según los ajustes de retención de Google (hasta 90 días los fallos, hasta 14 meses los eventos de uso). Los datos en tránsito se protegen con HTTPS. Para eliminar todo por tu parte, desinstala la aplicación o borra sus datos.</p>
+
+<h2>7. Políticas de terceros</h2>
+<ul>
+  <li><a href="https://firebase.google.com/support/privacy">Firebase (Google) — Privacidad y seguridad</a></li>
+  <li><a href="https://policies.google.com/privacy">Política de privacidad de Google</a> (Play Billing, identificador de publicidad)</li>
+  <li><a href="https://www.applovin.com/privacy/">Política de privacidad de AppLovin</a></li>
+  <li><a href="https://aps.amazon.com/aps/privacy-policy/">Aviso de privacidad de Amazon Publisher Services</a></li>
+  <li><a href="https://supabase.com/privacy">Política de privacidad de Supabase</a></li>
+</ul>
+
+<h2>8. Tus derechos</h2>
+<p>Según el país en el que residas, puedes tener derecho a acceder, corregir, eliminar o limitar el tratamiento de tus datos, y a retirar el consentimiento para la publicidad personalizada. Como no conservamos datos de cuenta, la mayoría de las solicitudes las gestionan los terceros indicados arriba, pero siempre puedes escribirnos a <a href="mailto:dev.pisanu@gmail.com">dev.pisanu@gmail.com</a> y te ayudaremos.</p>
+
+<h2>9. Cambios en esta política</h2>
+<p>Si esta política cambia, publicaremos la nueva versión en esta página con una nueva fecha de entrada en vigor. Los cambios importantes se anunciarán en las notas de la versión de la aplicación.</p>
+
+<h2>10. Contacto</h2>
+<p>Preguntas sobre esta política: <a href="mailto:dev.pisanu@gmail.com">dev.pisanu@gmail.com</a></p>
+
+<footer>
+  <p>SCRABBLE, WordFeud y Words With Friends son marcas registradas de sus respectivos propietarios. Word Expert no está afiliada, respaldada ni patrocinada por ellos.</p>
+  <p>© 2026 Pisanu. Todos los derechos reservados. · <a href="wordexpert-terms-es.html">Términos de uso</a></p>
+</footer>
+
+</main>
+</body>
+</html>

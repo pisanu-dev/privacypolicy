@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Word Expert — นโยบายความเป็นส่วนตัว</title>
+<style>
+  :root { color-scheme: light dark; --fg:#1b1b1f; --muted:#5a5a68; --bg:#ffffff; --card:#f4f3f8; --accent:#5b53c4; --line:#e2e1ea; }
+  @media (prefers-color-scheme: dark) {
+    :root { --fg:#e5e1e9; --muted:#a8a5b3; --bg:#131318; --card:#1e1d24; --accent:#b7b0ff; --line:#2e2d36; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; padding:24px 16px 64px; background:var(--bg); color:var(--fg);
+         font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans Thai",sans-serif;
+         line-height:1.75; font-size:16px; }
+  main { max-width:760px; margin:0 auto; }
+  h1 { font-size:1.6rem; margin:0 0 4px; }
+  h2 { font-size:1.15rem; margin:32px 0 8px; color:var(--accent); }
+  ul { padding-left:20px; }
+  li { margin:6px 0; }
+  a { color:var(--accent); }
+  .meta { color:var(--muted); font-size:0.9rem; margin:0 0 24px; }
+  .langs { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 24px; }
+  .langs a { display:inline-block; padding:4px 12px; border:1px solid var(--line); border-radius:999px;
+             text-decoration:none; font-size:0.85rem; }
+  .langs a[aria-current="page"] { background:var(--card); border-color:var(--accent); font-weight:600; }
+  .card { background:var(--card); border-radius:12px; padding:12px 16px; margin:16px 0; }
+  table { border-collapse:collapse; width:100%; margin:12px 0; font-size:0.92rem; }
+  th, td { text-align:left; vertical-align:top; padding:8px 10px; border-bottom:1px solid var(--line); }
+  th { color:var(--muted); font-weight:600; }
+  footer { margin-top:48px; padding-top:16px; border-top:1px solid var(--line); color:var(--muted); font-size:0.85rem; }
+</style>
+</head>
+<body>
+<main>
+
+<nav class="langs">
+  <a href="wordexpert-privacy.html">English</a>
+  <a href="wordexpert-privacy-th.html" aria-current="page">ไทย</a>
+  <a href="wordexpert-privacy-fr.html">Français</a>
+  <a href="wordexpert-privacy-es.html">Español</a>
+</nav>
+
+<h1>Word Expert — นโยบายความเป็นส่วนตัว</h1>
+<p class="meta">มีผลวันที่ 11 กรกฎาคม 2569 · ผู้พัฒนา: Pisanu · ติดต่อ: <a href="mailto:dev.pisanu@gmail.com">dev.pisanu@gmail.com</a></p>
+
+<div class="card">
+  <p><strong>สรุปสั้น ๆ:</strong> Word Expert ไม่มีระบบสมัครสมาชิก และไม่เคยขอชื่อ อีเมล เบอร์โทร หรือตำแหน่งที่ตั้งของคุณ การตั้งค่า รายการโปรด และคำที่คุณค้นหาถูกเก็บไว้บนเครื่องของคุณ แอปจะส่งเฉพาะ "คำที่คุณกดดูความหมาย" ไปยังบริการพจนานุกรม ส่งรายงานข้อขัดข้องและสถิติการใช้งานไปยัง Firebase และแสดงโฆษณาที่ใช้รหัสโฆษณา (Advertising ID) เฉพาะในรุ่นฟรีเท่านั้น</p>
+</div>
+
+<h2>1. ข้อมูลที่เก็บไว้บนเครื่องของคุณ</h2>
+<p>ข้อมูลต่อไปนี้ถูกบันทึกในพื้นที่ส่วนตัวของแอปและไม่ถูกอัปโหลดออกไปไหน</p>
+<ul>
+  <li>การตั้งค่าแอป: ภาษาของแอป ธีม รูปแบบการให้คะแนน พจนานุกรมที่เลือก ประเภทการค้นหาเริ่มต้น และตัวเลือกการแสดงผล/ความยาวคำ</li>
+  <li>รายการค้นหาที่คุณบันทึกเป็นรายการโปรด รวมถึงชื่อที่คุณตั้งเอง</li>
+  <li>เวลาหมดอายุของสิทธิ์ Pro ที่ได้จากการชมวิดีโอ และสถานะการซื้อ Pro</li>
+</ul>
+<p>การถอนการติดตั้งแอป หรือการล้างข้อมูลแอปในการตั้งค่าของ Android จะลบข้อมูลทั้งหมดนี้ทิ้ง</p>
+
+<h2>2. ข้อมูลที่ส่งไปยังบริการภายนอก</h2>
+<table>
+  <tr><th>บริการ</th><th>ข้อมูลที่ส่ง</th><th>วัตถุประสงค์</th></tr>
+  <tr>
+    <td>บริการคำจำกัดความ (โฮสต์บน Supabase)</td>
+    <td>คำที่คุณกดดู และภาษาของพจนานุกรม โดยไม่มีตัวระบุใด ๆ ที่เชื่อมโยงคำขอนั้นกับตัวคุณ</td>
+    <td>เพื่อส่งความหมายของคำนั้นกลับมา</td>
+  </tr>
+  <tr>
+    <td>Firebase Crashlytics</td>
+    <td>รายงานข้อขัดข้อง: รุ่นอุปกรณ์ เวอร์ชันระบบปฏิบัติการ เวอร์ชันแอป รหัสการติดตั้งแบบสุ่ม และสถานะทางเทคนิคของแอปในขณะที่เกิดข้อขัดข้อง</td>
+    <td>เพื่อค้นหาและแก้ไขข้อขัดข้อง</td>
+  </tr>
+  <tr>
+    <td>Firebase Analytics</td>
+    <td>เหตุการณ์การใช้งานแบบไม่ระบุตัวตนและสรุปรวม (เช่น มีการขอชมวิดีโอเพื่อรับรางวัล) พร้อมข้อมูลอุปกรณ์และแอปมาตรฐานที่ Google เก็บ</td>
+    <td>เพื่อเข้าใจว่าฟีเจอร์ใดถูกใช้งานและแอปทำงานได้ดีเพียงใด</td>
+  </tr>
+  <tr>
+    <td>Firebase Remote Config</td>
+    <td>เวอร์ชันแอปและรหัสการติดตั้งแบบสุ่ม</td>
+    <td>เพื่อส่งค่าการตั้งค่ามายังแอปโดยไม่ต้องอัปเดตแอป</td>
+  </tr>
+  <tr>
+    <td>โฆษณา: AppLovin MAX และ Amazon Publisher Services (<strong>เฉพาะรุ่นฟรี</strong>)</td>
+    <td>รหัสโฆษณา (AAID) หมายเลข IP ข้อมูลอุปกรณ์และระบบปฏิบัติการ ตำแหน่งโดยประมาณที่คำนวณจาก IP และการโต้ตอบของคุณกับโฆษณา</td>
+    <td>เพื่อเลือก แสดง และวัดผลโฆษณาที่เป็นรายได้สนับสนุนรุ่นฟรี</td>
+  </tr>
+  <tr>
+    <td>Google Play Billing</td>
+    <td>สถานะการซื้อสินค้าในแอป (Pro)</td>
+    <td>เพื่อปลดล็อก Pro และกู้คืนสิทธิ์บนเครื่องใหม่ การชำระเงินดำเนินการโดย Google ทั้งหมด แอปไม่เห็นข้อมูลบัตรหรือข้อมูลการชำระเงินของคุณ</td>
+  </tr>
+</table>
+
+<h2>3. โฆษณาและทางเลือกของคุณ</h2>
+<ul>
+  <li><strong>การซื้อ Pro จะตัดโฆษณาทั้งหมด</strong> และหยุดการใช้งาน SDK โฆษณา</li>
+  <li>หากคุณอยู่ในเขต EEA สหราชอาณาจักร หรือสวิตเซอร์แลนด์ จะมีหน้าจอขอความยินยอมจากแพลตฟอร์มความยินยอมที่ได้รับการรับรองของ AppLovin แสดงขึ้นก่อนใช้โฆษณาแบบเฉพาะบุคคล และเราจะเคารพการเลือกของคุณ คุณเปลี่ยนการตั้งค่าภายหลังได้จากหน้าจอความยินยอมของ SDK โฆษณา</li>
+  <li>ผู้ที่อยู่ในรัฐแคลิฟอร์เนียสามารถใช้สิทธิ์ "ห้ามขายหรือแชร์ข้อมูลส่วนบุคคลของฉัน" ได้จากหน้าจอความยินยอมเดียวกัน</li>
+  <li>บนอุปกรณ์ใดก็ตาม คุณสามารถจำกัดการติดตามโฆษณาหรือรีเซ็ตรหัสโฆษณาได้ที่ <em>การตั้งค่า Android → ความเป็นส่วนตัว → โฆษณา</em></li>
+</ul>
+
+<h2>4. สิทธิ์ที่แอปขอ</h2>
+<p>แอปขอ<strong>เฉพาะสิทธิ์การเชื่อมต่ออินเทอร์เน็ต</strong>เท่านั้น ไม่ขอสิทธิ์เข้าถึงตำแหน่งที่ตั้ง รายชื่อผู้ติดต่อ กล้อง ไมโครโฟน รูปภาพ หรือไฟล์ของคุณ</p>
+
+<h2>5. เด็ก</h2>
+<p>Word Expert ไม่ได้มุ่งเป้าไปที่เด็กอายุต่ำกว่า 13 ปี และเราไม่มีเจตนาเก็บข้อมูลส่วนบุคคลจากเด็ก หากคุณเชื่อว่าเด็กได้ให้ข้อมูลส่วนบุคคลผ่านแอปนี้ กรุณาติดต่อเรา แล้วเราจะลบข้อมูลนั้นทิ้ง</p>
+
+<h2>6. การเก็บรักษา ความปลอดภัย และการลบข้อมูล</h2>
+<p>เราไม่มีฐานข้อมูลผู้ใช้ จึงไม่มีโปรไฟล์ส่วนบุคคลของคุณให้ลบ ข้อมูลวินิจฉัยที่อยู่กับ Firebase จะถูกเก็บตามระยะเวลาที่ Google กำหนด (ข้อมูลข้อขัดข้องไม่เกิน 90 วัน เหตุการณ์การใช้งานไม่เกิน 14 เดือน) ข้อมูลระหว่างส่งได้รับการปกป้องด้วย HTTPS หากต้องการลบข้อมูลทั้งหมดในฝั่งของคุณ ให้ถอนการติดตั้งแอปหรือล้างข้อมูลแอป</p>
+
+<h2>7. นโยบายของผู้ให้บริการภายนอก</h2>
+<ul>
+  <li><a href="https://firebase.google.com/support/privacy">Firebase (Google) — ความเป็นส่วนตัวและความปลอดภัย</a></li>
+  <li><a href="https://policies.google.com/privacy">นโยบายความเป็นส่วนตัวของ Google</a> (Play Billing, Advertising ID)</li>
+  <li><a href="https://www.applovin.com/privacy/">นโยบายความเป็นส่วนตัวของ AppLovin</a></li>
+  <li><a href="https://aps.amazon.com/aps/privacy-policy/">ประกาศความเป็นส่วนตัวของ Amazon Publisher Services</a></li>
+  <li><a href="https://supabase.com/privacy">นโยบายความเป็นส่วนตัวของ Supabase</a></li>
+</ul>
+
+<h2>8. สิทธิ์ของคุณ</h2>
+<p>ขึ้นอยู่กับประเทศที่คุณอาศัยอยู่ คุณอาจมีสิทธิ์เข้าถึง แก้ไข ลบ หรือจำกัดการประมวลผลข้อมูลของคุณ รวมถึงถอนความยินยอมสำหรับโฆษณาแบบเฉพาะบุคคล เนื่องจากเราไม่ได้เก็บข้อมูลบัญชีใด ๆ คำขอส่วนใหญ่จึงต้องดำเนินการกับผู้ให้บริการภายนอกข้างต้น แต่คุณสามารถเขียนถึงเราได้เสมอที่ <a href="mailto:dev.pisanu@gmail.com">dev.pisanu@gmail.com</a> แล้วเราจะช่วยเหลือ</p>
+
+<h2>9. การเปลี่ยนแปลงนโยบาย</h2>
+<p>หากนโยบายนี้มีการเปลี่ยนแปลง เราจะเผยแพร่ฉบับใหม่บนหน้านี้พร้อมระบุวันที่มีผลใหม่ การเปลี่ยนแปลงที่มีนัยสำคัญจะแจ้งไว้ในบันทึกการอัปเดตของแอป</p>
+
+<h2>10. ติดต่อ</h2>
+<p>คำถามเกี่ยวกับนโยบายนี้: <a href="mailto:dev.pisanu@gmail.com">dev.pisanu@gmail.com</a></p>
+
+<footer>
+  <p>SCRABBLE, WordFeud และ Words With Friends เป็นเครื่องหมายการค้าของเจ้าของแต่ละราย Word Expert ไม่มีความเกี่ยวข้อง ไม่ได้รับการรับรอง และไม่ได้รับการสนับสนุนจากเจ้าของเครื่องหมายการค้าดังกล่าว</p>
+  <p>© 2026 Pisanu สงวนลิขสิทธิ์ · <a href="wordexpert-terms-th.html">เงื่อนไขการใช้งาน</a></p>
+</footer>
+
+</main>
+</body>
+</html>
